@@ -28,6 +28,10 @@
             margin: 10px 0;
             padding: 8px;
         }
+        
+        .selecao {
+            max-height: 0px;
+        }
 
         #resultado {
             margin-top: 20px;
@@ -72,13 +76,22 @@
             background: transparent;
             border: 2px solid white;
             border-radius: 12px;
+            color: white;
+        }
 
+        input {
+            color: white;
+        }
+
+        input:focus-visible {
+            color: white;
         }
 
         .container {
             display: flex;
             align-items: center;
             justify-content: center;
+            color: white;
             flex-direction: column;
         }
     </style>
@@ -90,27 +103,28 @@
 
         <div class="calculeitor">
 
-            <img src="/CALCULEITOR.png" id="calculeitor" />
+            <img src="./CALCULEITOR.png" id="calculeitor" />
 
         </div>
 
+        <br>
 
-
+        <!-- Entrada do primeiro número -->
 
 
         <input type="text" id="num1" placeholder="Numero 1">
 
 
-        <select id="base1">
-            <option value="2">2</option>
-            <option value="8">8</option>
-            <option value="10" selected>10</option>
-            <option value="16">16</option>
-        </select>
+        <div class="selecao">
 
+            <select id="base1">
+                <option value="2">2</option>
+                <option value="8">8</option>
+                <option value="10" selected>10</option>
+                <option value="16">16</option>
+            </select>
 
-
-        <!-- Entrada do primeiro número -->
+        </div>
 
 
         <br>
@@ -162,7 +176,7 @@
             const resultado = somarBases(num1, base1, num2, base2);
 
             // Exibir o resultado em decimal
-            document.getElementById("resultado").innerHTML = `🟢 Resultado em Decimal: <strong>${resultado}</strong>`;
+            document.getElementById("resultado").innerHTML = `🟢 Resultado em Decimal: ${resultado}`;
         }
     </script>
 
