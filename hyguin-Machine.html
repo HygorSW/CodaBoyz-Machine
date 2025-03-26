@@ -16,11 +16,16 @@
     }
 
     body {
+        flex-direction: column;
         display: flex;
         min-height: 100vh;
         justify-content: center;
         align-items: center;
         background-color: black;
+        background-image: url(image22.png);
+        background-size: cover;
+        background-position: center;
+
     }
 
     .container {
@@ -59,9 +64,8 @@
     .labelline {
         position: absolute;
         font-size: 16px;
-        padding: 15px 10px;
-        padding-top: 26px;
-        background-color: black;
+        padding-top: 12px;
+        background-color: transparent;
         transition: 0.2s ease;
     }
 
@@ -85,10 +89,10 @@
 
     .btnAcao {
         height: 48px;
-        width: 290px;
+        width: 376px;
         background-color: #8D25D2;
         border: none;
-        border-radius: 30px;
+        border-radius: 10px;
         font-size: 25px;
         font-weight: bold;
         color: white;
@@ -142,13 +146,82 @@
         height: 48px;
         align-items: center;
     }
+
+
+    @media screen and (min-width: 1300px) {
+
+        /* Estilos para telas com largura maior que 900px */
+        .main {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 83px;
+            width: 100vw;
+        }
+
+        .header img {
+            height: 192px;
+            width: 420px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .entryarea {
+            position: relative;
+            height: 80px;
+            line-height: 90px;
+            width: 85%;
+
+        }
+
+        .container {
+            width: 617px;
+            min-height: 674px;
+            justify-content: space-evenly;
+            align-items: center;
+            border: 1px solid white;
+            gap: 14px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 25px;
+        }
+
+        .input {
+            position: relative;
+            width: 530px;
+            height: 74px;
+            outline: none;  
+            font-size: 1.2em;
+            padding: 0 30px;
+            line-height: 80px;
+            border-radius: 10px;
+            border: 2px solid white;
+            background-color: transparent;
+            transition: 0.1s ease;
+            z-index: 1111;
+        }
+
+        .labelline {
+            position: absolute;
+            font-size: 16px;
+            background-color: transparent;
+            transition: 0.2s ease;
+            padding: 0;
+        }
+
+    }
 </style>
 
 <body>
+    <div class="header">
+        <img src="https://i.imgur.com/sDF5kSA.png" alt="">
+    </div>
     <div class="main">
-        <div class="header">
-            <img src="https://i.imgur.com/sDF5kSA.png" alt="">
-        </div>
         <div class="container">
             <div class="container-titulo">
                 <div class="btnConverter">
@@ -206,6 +279,13 @@
             </div>
         </div>
     </div>
+
+    <!-- footer -->
+
+    <div class="Footer" style="padding: 25px;">
+        <p style="color: white;">Feito by <span style="color: #8D25D2;">Hygor Silva</span> e  <span style="color: #d2be25
+        ;">Erick Silva</span></p>
+    </div>
 </body>
 
 </html>
@@ -235,7 +315,7 @@
         // exibir e converter para outras bases
 
         if (base == 'Decimal') {
-            msgOctal.innerHTML = decimal.toString(8);
+            msgOctal.innerHTML = `<h3>${decimal.toString(8)}<h3>`;
             msgHexa.innerHTML = decimal.toString(16);
             msgBinario.innerHTML = decimal.toString(2);
             msgDecimal.innerHTML = " ";
@@ -247,14 +327,14 @@
             msgOctal.innerHTML = " ";
 
         } else if (base == 'Hexadecimal') {
-            msgOctal.innerHTML = decimal.toString(8);
+            msgOctal.innerHTML = `<h3>decimal.toString(8)<h3>`;
             msgDecimal.innerHTML = decimal.toString(10);
             msgBinario.innerHTML = decimal.toString(2);
             msgHexa.innerHTML = " ";
 
 
         } else {
-            msgOctal.innerHTML = decimal.toString(8);
+            msgOctal.innerHTML = `<h3>decimal.toString(8)<h3>`;
             msgHexa.innerHTML = decimal.toString(16);
             msgDecimal.innerHTML = decimal.toString(10);
             msgBinario.innerHTML = " ";
