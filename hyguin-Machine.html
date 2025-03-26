@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodaBoyZ-Machine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <style>
@@ -38,6 +43,7 @@
         display: flex;
         flex-direction: column;
         border-radius: 25px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
 
     .entryarea {
@@ -195,7 +201,7 @@
             position: relative;
             width: 530px;
             height: 74px;
-            outline: none;  
+            outline: none;
             font-size: 1.2em;
             padding: 0 30px;
             line-height: 80px;
@@ -214,6 +220,48 @@
             padding: 0;
         }
 
+        .resultado-texto {
+            width: 530px;
+            font-size: 14px;
+            padding: 0 18px;
+            line-height: 80px;
+            border-radius: 10px;
+            border: 2px solid white;
+            background-color: transparent;
+            transition: 0.1s ease;
+            color: white;
+            display: flex;
+            height: 74px;
+            align-items: center;
+        }
+
+        .btnAcao {
+            height: 74px;
+            width: 530px;
+            background-color: #8D25D2;
+            border: none;
+            border-radius: 10px;
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .btnAcao :hover {
+            color: #d2be25;
+        }
+
+        .btnConverter {
+            border-bottom: 3px solid #d2be25;
+        }
+
+        .container-titulo {
+            font-size: 14px;
+        }
+
+        .btnCalculadora :hover {
+            color: #d2be25;
+            transition: 0.2s ease;
+        }
     }
 </style>
 
@@ -228,7 +276,9 @@
                     <h1>CONVERTER</h1>
                 </div>
                 <div class="btnCalculadora">
-                    <h1>CALCULADORA</h1>
+                    <a href="/" style="text-decoration: none; color: white;">
+                        <h1>CALCULADORA</h1>
+                    </a>
                 </div>
 
             </div>
@@ -254,25 +304,25 @@
 
         <div class="container">
             <div class="resultado-texto">
-                <h3 style="color: white;">Decimal: </h3>
+             Decimal:
 
                 <div id="msgDecimal"> </div>
             </div>
 
             <div class="resultado-texto">
-                <h3 style="color: white;">Octal: </h3>
+               Octal:
 
                 <div id="msgOctal"> </div>
 
             </div>
             <div class="resultado-texto">
-                <h3 style="color: white;">Hexadecimal: </h3>
+               Hexadecimal:
 
                 <div id="msgHexa"> </div>
 
             </div>
             <div class="resultado-texto">
-                <h3 style="color: white;">Binario: </h3>
+               Binario:
 
                 <div id="msgBinario"> </div>
 
@@ -283,7 +333,7 @@
     <!-- footer -->
 
     <div class="Footer" style="padding: 25px;">
-        <p style="color: white;">Feito by <span style="color: #8D25D2;">Hygor Silva</span> e  <span style="color: #d2be25
+        <p style="color: white;">Feito by <span style="color: #8D25D2;">Hygor Silva</span> e <span style="color: #d2be25
         ;">Erick Silva</span></p>
     </div>
 </body>
@@ -316,27 +366,27 @@
 
         if (base == 'Decimal') {
             msgOctal.innerHTML = `<h3>${decimal.toString(8)}<h3>`;
-            msgHexa.innerHTML = decimal.toString(16);
-            msgBinario.innerHTML = decimal.toString(2);
+            msgHexa.innerHTML =`<h3>${decimal.toString(16)}<h3>`;
+            msgBinario.innerHTML =`<h3>${decimal.toString(2)}<h3>`;
             msgDecimal.innerHTML = " ";
 
         } else if (base == 'Octal') {
-            msgDecimal.innerHTML = decimal.toString(10);
-            msgHexa.innerHTML = decimal.toString(16);
-            msgBinario.innerHTML = decimal.toString(2);
+            msgDecimal.innerHTML =`<h3>${decimal.toString(10)}<h3>`;
+            msgHexa.innerHTML =`<h3>${decimal.toString(16)}<h3>`;
+            msgBinario.innerHTML =`<h3>${decimal.toString(2)}<h3>`;
             msgOctal.innerHTML = " ";
 
         } else if (base == 'Hexadecimal') {
-            msgOctal.innerHTML = `<h3>decimal.toString(8)<h3>`;
-            msgDecimal.innerHTML = decimal.toString(10);
-            msgBinario.innerHTML = decimal.toString(2);
+            msgOctal.innerHTML = `<h3>  ${decimal.toString(8)}<h3>`;
+            msgDecimal.innerHTML =`<h3>${decimal.toString(10)}<h3>`;
+            msgBinario.innerHTML =`<h3>${decimal.toString(2)}<h3>`;
             msgHexa.innerHTML = " ";
 
 
         } else {
-            msgOctal.innerHTML = `<h3>decimal.toString(8)<h3>`;
-            msgHexa.innerHTML = decimal.toString(16);
-            msgDecimal.innerHTML = decimal.toString(10);
+            msgOctal.innerHTML = `<h3>  ${decimal.toString(8)}<h3>`;
+            msgHexa.innerHTML =`<h3>${decimal.toString(16)}<h3>`;
+            msgDecimal.innerHTML =`<h3>${decimal.toString(10)}<h3>`;
             msgBinario.innerHTML = " ";
 
         }

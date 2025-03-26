@@ -5,18 +5,26 @@
     <meta charset="UTF-8">
     <title>Calculadora de Bases</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            box-sizing: border-box;
+        }
+
         body {
+            flex-direction: column;
+            min-height: 100vh;
             font-family: Arial, sans-serif;
-            margin: 20px;
             background-color: #0b0a0a;
             color: white;
             display: flex;
             justify-content: center;
             align-items: center;
-        
+
         }
 
-        div_esquerda{
+        div_esquerda {
             background-color: #9d08e2;
         }
 
@@ -32,7 +40,7 @@
             margin: 10px 0;
             padding: 8px;
         }
-        
+
         .selecao {
             max-height: 0px;
         }
@@ -149,7 +157,7 @@
         <!-- Botão para somar -->
         <button onclick="calcularSoma()">Somar</button>
 
-        
+
 
 
     </div>
@@ -158,7 +166,7 @@
     <div class="div_esquerda">
         <!-- Resultado -->
 
-    <div id="resultado"></div>
+        <div id="resultado"></div>
 
     </div>
 
