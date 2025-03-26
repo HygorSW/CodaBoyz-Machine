@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodaBoyZ-Machine</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        box-sizing: border-box;
+    }
+
+    body {
+        display: flex;
+        min-height: 100vh;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+    }
+
+    .container {
+        width: 400px;
+        min-height: 325px;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid white;
+        gap: 14px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 25px;
+    }
+
+    .entryarea {
+        position: relative;
+        height: 80px;
+        line-height: 90px;
+    }
+
+    .input {
+        position: relative;
+        width: 375px;
+        height: 48px;
+        outline: none;
+        font-size: 1.2em;
+        padding: 0 30px;
+        line-height: 80px;
+        border-radius: 10px;
+        border: 2px solid white;
+        background-color: transparent;
+        transition: 0.1s ease;
+        z-index: 1111;
+    }
+
+    .labelline {
+        position: absolute;
+        font-size: 16px;
+        padding: 15px 10px;
+        padding-top: 26px;
+        background-color: black;
+        transition: 0.2s ease;
+    }
+
+    .input:focus,
+    .input:valid {
+        color: white;
+        border: 2px solid white;
+    }
+
+    .input:focus+.labelline,
+    .input:valid+.labelline {
+        color: white;
+        height: 13px;
+        line-height: 0px;
+        transform: translate(-15px, -16px) scale(0.88);
+        z-index: 1111;
+        top: 0;
+        margin: 10px 38px;
+    }
+
+
+    .btnAcao {
+        height: 48px;
+        width: 290px;
+        background-color: #8D25D2;
+        border: none;
+        border-radius: 30px;
+        font-size: 25px;
+        font-weight: bold;
+        color: white;
+    }
+
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 13px;
+    }
+
+
+    .container-titulo {
+        flex-direction: row;
+        display: flex;
+        font-size: 11px;
+        gap: 48px;
+        justify-content: center;
+        color: white;
+    }
+
+    .titulo-resultado {
+        flex-direction: row;
+        display: flex;
+        font-size: 11px;
+        gap: 48px;
+        justify-content: flex-start;
+        color: white;
+        width: 93%;
+    }
+
+    #selectStyle {
+        color: white;
+        background-color: black;
+    }
+
+    .resultado-texto {
+        width: 375px;
+        font-size: 14px;
+        padding: 0 18px;
+        line-height: 80px;
+        border-radius: 10px;
+        border: 2px solid white;
+        background-color: transparent;
+        transition: 0.1s ease;
+        color: white;
+        display: flex;
+        height: 48px;
+        align-items: center;
+    }
+</style>
+
+<body>
+    <div class="main">
+        <div class="header">
+            <img src="https://i.imgur.com/sDF5kSA.png" alt="">
+        </div>
+        <div class="container">
+            <div class="container-titulo">
+                <div class="btnConverter">
+                    <h1>CONVERTER</h1>
+                </div>
+                <div class="btnCalculadora">
+                    <h1>CALCULADORA</h1>
+                </div>
+
+            </div>
+            <div class="entryarea">
+
+                <select class="input" id="selectStyle">
+                    <option value="Decimal">Decimal</option>
+                    <option value="Octal">Octal</option>
+                    <option value="Hexadecimal">Hexadecimal</option>
+                    <option value="Binario">Binario</option>
+                </select>
+                <div class="labelline">Base:</div>
+
+            </div>
+            <div class="entryarea">
+                <input id="demo1" class="input" type="text" placeholder="Ex: 42">
+                <div class="labelline">Numero:</div>
+            </div>
+            <button class="btnAcao" onclick="converter()">Converter</button>
+        </div>
+
+        <!-- FIM CONTAINER 1 -->
+
+        <div class="container">
+            <div class="resultado-texto">
+                <h3 style="color: white;">Decimal: </h3>
+
+                <div id="msgDecimal"> </div>
+            </div>
+
+            <div class="resultado-texto">
+                <h3 style="color: white;">Octal: </h3>
+
+                <div id="msgOctal"> </div>
+
+            </div>
+            <div class="resultado-texto">
+                <h3 style="color: white;">Hexadecimal: </h3>
+
+                <div id="msgHexa"> </div>
+
+            </div>
+            <div class="resultado-texto">
+                <h3 style="color: white;">Binario: </h3>
+
+                <div id="msgBinario"> </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function converter() {
+        var base = selectStyle.value;
+        var valor = demo1.value;
+        var decimal;
+
+
+        // converter para base selecionada
+        if (base === "Decimal") {
+            decimal = parseInt(valor, 10);
+        } else if (base === "Octal") {
+            decimal = parseInt(valor, 8);
+        } else if (base === "Hexadecimal") {
+            decimal = parseInt(valor, 16);
+        } else if (base === "Binario") {
+            decimal = parseInt(valor, 2);
+        } else {
+            alert("Base inválida!");
+        }
+
+
+
+
+        // exibir e converter para outras bases
+
+        if (base == 'Decimal') {
+            msgOctal.innerHTML = decimal.toString(8);
+            msgHexa.innerHTML = decimal.toString(16);
+            msgBinario.innerHTML = decimal.toString(2);
+            msgDecimal.innerHTML = " ";
+
+        } else if (base == 'Octal') {
+            msgDecimal.innerHTML = decimal.toString(10);
+            msgHexa.innerHTML = decimal.toString(16);
+            msgBinario.innerHTML = decimal.toString(2);
+            msgOctal.innerHTML = " ";
+
+        } else if (base == 'Hexadecimal') {
+            msgOctal.innerHTML = decimal.toString(8);
+            msgDecimal.innerHTML = decimal.toString(10);
+            msgBinario.innerHTML = decimal.toString(2);
+            msgHexa.innerHTML = " ";
+
+
+        } else {
+            msgOctal.innerHTML = decimal.toString(8);
+            msgHexa.innerHTML = decimal.toString(16);
+            msgDecimal.innerHTML = decimal.toString(10);
+            msgBinario.innerHTML = " ";
+
+        }
+    }
+</script>
