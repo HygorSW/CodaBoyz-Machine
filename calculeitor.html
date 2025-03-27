@@ -87,15 +87,16 @@
         }
 
         .resultados {
-            padding: 30px;
+            padding: 50px;
             height: 50%;
             width: 90%;
             color: white;
             background-color: #0B0A0A;
             border-radius: 30px;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
+            align-items: self-start;
+            justify-content: flex-start;
 
 
         }
@@ -119,6 +120,25 @@
 
         }
 
+        .resultados>h2 {
+            /* font-family: "Inter", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 900;
+            font-style: normal;
+            font-size: xx-large; */
+            color: #ffffffae;
+            text-align: center;
+            font-family: Inter;
+            font-size: 50px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 112px;
+            letter-spacing: -3px;
+
+
+        }
+
+
 
 
         #base1 {
@@ -130,7 +150,9 @@
             text-align: center;
             position: relative;
             left: 240px;
-            bottom: 80px;
+            bottom: 100px;
+            height: 50px;
+            width: 50px;
 
         }
 
@@ -150,8 +172,9 @@
             text-align: center;
             position: relative;
             left: 240px;
-            bottom: 80px;
-
+            bottom: 100px;
+            height: 50px;
+            width: 50px;
 
         }
 
@@ -223,10 +246,8 @@
         }
 
         .btnOperacao:hover {
-            background-color: white;
-            transition: 0.5s ease;
-            translate: 0px -2px;
-            box-shadow: 5px 5px 20px 1px black;
+            color: white;
+            transition: 0.5s;
         }
     </style>
 </head>
@@ -279,10 +300,18 @@
 
                 <!-- Botão para somar -->
                 <div class="btnCalculos">
-                    <button onclick="calcularSoma()" class="btnOperacao">Somar</button>
-                    <button onclick="calcularSubtracao()" class="btnOperacao">subtracao</button>
-                    <button onclick="calcularDivisao()" class="btnOperacao">Dividir</button>
-                    <button onclick="calcularMultiplicacao()" class="btnOperacao">Multiplicação</button>
+                    <button onclick="calcularSoma()" class="btnOperacao">
+                        <h1>+</h1>
+                    </button>
+                    <button onclick="calcularSubtracao()" class="btnOperacao">
+                        <h1>-</h1>
+                    </button>
+                    <button onclick="calcularDivisao()" class="btnOperacao">
+                        <h1>÷</h1>
+                    </button>
+                    <button onclick="calcularMultiplicacao()" class="btnOperacao">
+                        <h1>x</h1>
+                    </button>
 
                 </div>
 
@@ -303,11 +332,13 @@
             <div class="resultados" id="resultado">
 
                 <div id="resultado"></div>
+                <div id="conta"></div>
 
             </div>
 
             <div class="trocador">
-                <a href="./img/hyguin-Machine.html" style="text-decoration: none; " class="trocador"> <img src="./img/Component 2.png" alt=""> </a>
+                <a href="./hyguin-Machine.html" style="text-decoration: none; " class="trocador"> <img
+                        src="./img/Component 2.png" alt=""> </a>
             </div>
 
 
@@ -357,6 +388,10 @@
         // Validar entrada
         if (isNaN(decimal1) || isNaN(decimal2)) {
             alert("Entrada inválida! Verifique os números e bases.")
+            // Exibir o resultado em decimal
+            document.getElementById("resultado").innerHTML = `<h1>${resultado}</h1>`;
+            document.getElementById("resultado").innerHTML += `<br><h2>${num1} + ${num2}</h2>`;
+
         }
 
         // Retorna a subtracao em decimal
@@ -416,6 +451,10 @@
         // Validar entrada
         if (isNaN(decimal1) || isNaN(decimal2)) {
             alert("Entrada inválida! Verifique os números e bases.")
+            // Exibir o resultado em decimal
+            document.getElementById("resultado").innerHTML = `<h1>${resultado}</h1>`;
+            document.getElementById("resultado").innerHTML += `<br><h2>${num1} - ${num2}</h2>`;
+
         }
 
         // Retorna a subtracao em decimal
@@ -432,9 +471,57 @@
 
         const resultado = multiplicarBases(num1, base1, num2, base2);
 
-        // Exibir o resultado em decimal
-        document.getElementById("resultado").innerHTML = `<h1>${resultado}</h1>`;
-    }
+
+            // Retorna a divisão em decimal
+            return decimal1 / decimal2;
+        }
+
+        // Função que coleta os dados do formulário e exibe o resultado
+        function calcularDivisao() {
+            const num1 = document.getElementById("num1").value.trim();
+            const base1 = parseInt(document.getElementById("base1").value);
+
+            const num2 = document.getElementById("num2").value.trim();
+            const base2 = parseInt(document.getElementById("base2").value);
+
+            const resultado = dividirBases(num1, base1, num2, base2);
+
+            // Exibir o resultado em decimal
+            document.getElementById("resultado").innerHTML = `<h1>${resultado}</h1>`;
+            document.getElementById("resultado").innerHTML += `<br><h2>${num1} ÷ ${num2}</h2>`;
+        }
+
+        // Multiplicar
+
+        function multiplicarBases(num1, base1, num2, base2) {
+            const decimal1 = parseInt(num1, base1);
+            const decimal2 = parseInt(num2, base2);
+
+            // Validar entrada
+            if (isNaN(decimal1) || isNaN(decimal2)) {
+                alert("Entrada inválida! Verifique os números e bases.")
+            }
+
+            // Retorna a subtracao em decimal
+            return decimal1 * decimal2;
+        }
+
+        // Função que coleta os dados do formulário e exibe o resultado
+        function calcularMultiplicacao() {
+            const num1 = document.getElementById("num1").value.trim();
+            const base1 = parseInt(document.getElementById("base1").value);
+
+            const num2 = document.getElementById("num2").value.trim();
+            const base2 = parseInt(document.getElementById("base2").value);
+
+            const resultado = multiplicarBases(num1, base1, num2, base2);
+
+            // Exibir o resultado em decimal
+            document.getElementById("resultado").innerHTML = `<h1>${resultado}</h1>`;
+
+            document.getElementById("resultado").innerHTML += `<br><h2>${num1} x ${num2}</h2>`;
+        }
+>>>>>>> 6ceb2abf3ac366af723afee97e24f5f0cf0d7b63
 
 
 
