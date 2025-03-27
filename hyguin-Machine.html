@@ -78,7 +78,8 @@
         border-radius: 25px;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         backdrop-filter: blur(5px);
-        background-color: rgba(0, 0, 0, 0.22); /* Preto com 22% de opacidade */
+        background-color: rgba(0, 0, 0, 0.22);
+        /* Preto com 22% de opacidade */
 
 
     }
@@ -220,7 +221,24 @@
         transform: translateY(0);
     }
 
+
     @media screen and (min-width: 1300px) {
+
+
+
+        @media screen and(max-height: 720px) {
+            .container {
+                width: 617px;
+                min-height: 423px;
+                justify-content: space-evenly;
+                align-items: center;
+                border: 1px solid var(--bordas);
+                gap: 14px;
+                display: flex;
+                flex-direction: column;
+                border-radius: 25px;
+            }
+        }
 
         /* Estilos para telas com largura maior que 900px */
         .main {
@@ -390,6 +408,7 @@
                     <option value="Octal">Octal</option>
                     <option value="Hexadecimal">Hexadecimal</option>
                     <option value="Binario">Binario</option>
+                    <option value="ASCII">ASCII</option>
                 </select>
                 <div class="labelline">Base:</div>
 
@@ -448,6 +467,8 @@
 
 </html>
 <script>
+
+
     window.addEventListener('load', () => {
         const container = document.getElementById('header');
         container.classList.add('show');
@@ -487,6 +508,8 @@
             decimal = parseInt(valor, 16);
         } else if (base === "Binario") {
             decimal = parseInt(valor, 2);
+        } else if (base == 'ASCII') {
+            decimal = valor.charCodeAt(0);
         } else {
             alert("Base inválida!");
         }
@@ -514,7 +537,15 @@
             msgBinario.innerHTML = `<h3>${decimal.toString(2)}<h3>`;
             msgHexa.innerHTML = " ";
 
-        } else {
+        } else if (base == 'ASCII') {
+            msgDecimal.innerHTML = `<h3>${decimal}</h3>`;
+            msgOctal.innerHTML = `<h3>${decimal.toString(8)}</h3>`;
+            msgBinario.innerHTML = `<h3>${decimal.toString(2)}</h3>`;
+            msgHexa.innerHTML = `<h3>${decimal.toString(16)}</h3>`;
+
+        }
+
+        else {
             msgOctal.innerHTML = `<h3>  ${decimal.toString(8)}<h3>`;
             msgHexa.innerHTML = `<h3>${decimal.toString(16)}<h3>`;
             msgDecimal.innerHTML = `<h3>${decimal.toString(10)}<h3>`;
