@@ -3,6 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
     <title>Calculadora de Bases</title>
     <style>
         * {
@@ -13,10 +18,10 @@
         }
 
         body {
-            flex-direction: column;
+
             min-height: 100vh;
             font-family: Arial, sans-serif;
-            background-color: #0b0a0a;
+            background-color: #0B0A0A;
             color: white;
             display: flex;
             justify-content: center;
@@ -24,8 +29,42 @@
 
         }
 
-        div_esquerda {
+
+        .div_direita {
+
             background-color: #9d08e2;
+            background-image: url(./Frame\ 19.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 50%;
+            height: 100%;
+            border-radius: 8% 0px 0px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+        }
+
+        .div_esquerda {
+            background-color: #0B0A0A;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+
+
+
+        }
+
+        .main {
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #0B0A0A;
         }
 
         /* .calculeitor {
@@ -45,21 +84,50 @@
             max-height: 0px;
         }
 
-        #resultado {
-            margin-top: 20px;
-            font-weight: bold;
+        .resultados {
+            height: 50%;
+            width: 90%;
+            color: white;
+            background-color: #0B0A0A;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+
         }
 
+
+        .resultados>h1 {
+            /* font-family: "Inter", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 900;
+            font-style: normal;
+            font-size: xx-large; */
+            color: #FFF;
+            text-align: center;
+            font-family: Inter;
+            font-size: 150px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 112px;
+            /* 74.667% */
+            letter-spacing: -3px;
+
+        }
+
+
+
         #base1 {
-            background-color: mediumpurple;
+            background-color: #8D25D2;
             border-radius: 30px;
             text-decoration: none;
             appearance: none;
             color: white;
             text-align: center;
             position: relative;
-            left: 85px;
-            bottom: 70px;
+            left: 240px;
+            bottom: 80px;
 
         }
 
@@ -71,15 +139,15 @@
         }
 
         #base2 {
-            background-color: mediumpurple;
+            background-color: #8D25D2;
             border-radius: 30px;
             text-decoration: none;
             appearance: none;
             color: white;
             text-align: center;
             position: relative;
-            left: 85px;
-            bottom: 70px;
+            left: 240px;
+            bottom: 80px;
 
 
         }
@@ -93,6 +161,8 @@
 
         input {
             color: white;
+            width: 500px;
+            height: 50px;
         }
 
         input:focus-visible {
@@ -106,67 +176,105 @@
             color: white;
             flex-direction: column;
         }
+
+        .calculeitor {
+            position: absolute;
+            top: 70px;
+        }
+
+        .trocador {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 250px;
+
+        }
+
+        .trocador>img {
+            width: 90%;
+            height: 90%;
+        }
     </style>
 </head>
 
 <body>
+    <div class="main">
+        <div class="div_esquerda">
+            <div class="container">
 
-    <div class="container">
+                <div class="calculeitor">
 
-        <div class="calculeitor">
+                    <img src="./CALCULEITOR.png" id="calculeitor" />
 
-            <img src="./CALCULEITOR.png" id="calculeitor" />
+                </div>
+
+                <br>
+
+                <!-- Entrada do primeiro número -->
+
+
+                <input type="text" id="num1" placeholder="Numero 1">
+
+
+                <div class="selecao">
+
+                    <select id="base1">
+                        <option value="2">2</option>
+                        <option value="8">8</option>
+                        <option value="10" selected>10</option>
+                        <option value="16">16</option>
+                    </select>
+
+                </div>
+
+
+                <br>
+
+                <!-- Entrada do segundo número -->
+
+                <input type="text" id="num2" placeholder="Numero 2">
+
+                <select id="base2">
+                    <option value="2">2</option>
+                    <option value="8">8</option>
+                    <option value="10" selected>10</option>
+                    <option value="16">16</option>
+                </select>
+
+                <br>
+
+                <!-- Botão para somar -->
+                <button onclick="calcularSoma()">Somar</button>
+
+
+
+
+            </div>
+
+
+
 
         </div>
 
-        <br>
+        <div class="div_direita">
 
-        <!-- Entrada do primeiro número -->
+            <!-- Resultado -->
+
+            <div class="resultados" id="resultado">
+
+                <div id="resultado"></div>
+
+            </div>
+
+            <div class="trocador">
+                <img src="./Component 2.png" alt="">
+            </div>
 
 
-        <input type="text" id="num1" placeholder="Numero 1">
 
-
-        <div class="selecao">
-
-            <select id="base1">
-                <option value="2">2</option>
-                <option value="8">8</option>
-                <option value="10" selected>10</option>
-                <option value="16">16</option>
-            </select>
 
         </div>
-
-
-        <br>
-
-        <!-- Entrada do segundo número -->
-
-        <input type="text" id="num2" placeholder="Numero 2">
-
-        <select id="base2">
-            <option value="2">2</option>
-            <option value="8">8</option>
-            <option value="10" selected>10</option>
-            <option value="16">16</option>
-        </select>
-
-        <br>
-
-        <!-- Botão para somar -->
-        <button onclick="calcularSoma()">Somar</button>
-
-
-
-
-    </div>
-
-
-    <div class="div_esquerda">
-        <!-- Resultado -->
-
-        <div id="resultado"></div>
 
     </div>
 
@@ -178,7 +286,7 @@
 
             // Validar entrada
             if (isNaN(decimal1) || isNaN(decimal2)) {
-                return "Entrada inválida! Verifique os números e bases.";
+                alert("Entrada inválida! Verifique os números e bases.")
             }
 
             // Retorna a soma em decimal
@@ -196,7 +304,7 @@
             const resultado = somarBases(num1, base1, num2, base2);
 
             // Exibir o resultado em decimal
-            document.getElementById("resultado").innerHTML = `🟢 Resultado em Decimal: ${resultado}`;
+            document.getElementById("resultado").innerHTML = `<h1>${resultado}</h1>`;
         }
     </script>
 
