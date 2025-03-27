@@ -110,60 +110,57 @@
 </head>
 
 <body>
+    <div class="div_esquerda">
 
-    <div class="container">
+        <div class="container">
 
-        <div class="calculeitor">
+            <div class="calculeitor">
 
-            <img src="./CALCULEITOR.png" id="calculeitor" />
+                <img src="./CALCULEITOR.png" id="calculeitor" />
 
-        </div>
+            </div>
 
-        <br>
+            <br>
 
-        <!-- Entrada do primeiro número -->
-
-
-        <input type="text" id="num1" placeholder="Numero 1">
+            <!-- Entrada do primeiro número -->
 
 
-        <div class="selecao">
+            <input type="text" id="num1" placeholder="Numero 1">
 
-            <select id="base1">
+
+            <div class="selecao">
+
+                <select id="base1">
+                    <option value="2">2</option>
+                    <option value="8">8</option>
+                    <option value="10" selected>10</option>
+                    <option value="16">16</option>
+                </select>
+
+            </div>
+
+
+            <br>
+
+            <!-- Entrada do segundo número -->
+
+            <input type="text" id="num2" placeholder="Numero 2">
+
+            <select id="base2">
                 <option value="2">2</option>
                 <option value="8">8</option>
                 <option value="10" selected>10</option>
                 <option value="16">16</option>
             </select>
 
+            <br>
+
+            <!-- Botão para somar -->
+            <button onclick="calcularSoma()">Somar</button>
         </div>
 
 
-        <br>
 
-        <!-- Entrada do segundo número -->
-
-        <input type="text" id="num2" placeholder="Numero 2">
-
-        <select id="base2">
-            <option value="2">2</option>
-            <option value="8">8</option>
-            <option value="10" selected>10</option>
-            <option value="16">16</option>
-        </select>
-
-        <br>
-
-        <!-- Botão para somar -->
-        <button onclick="calcularSoma()">Somar</button>
-
-
-
-
-    </div>
-
-
-    <div class="div_esquerda">
         <!-- Resultado -->
 
         <div id="resultado"></div>

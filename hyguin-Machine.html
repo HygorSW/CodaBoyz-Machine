@@ -23,13 +23,14 @@
     body {
         flex-direction: column;
         display: flex;
-        min-height: 100vh;
+        min-height: 99vh;
         justify-content: center;
         align-items: center;
         background-color: black;
         background-image: url(image22.png);
         background-size: cover;
         background-position: center;
+        overflow: hidden;
 
     }
 
@@ -44,7 +45,11 @@
         flex-direction: column;
         border-radius: 25px;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        backdrop-filter: blur(50px);
+
     }
+
+   
 
     .entryarea {
         position: relative;
@@ -153,6 +158,30 @@
         align-items: center;
     }
 
+    .btnAcao :hover {
+        color: #d2be25;
+    }
+
+
+    .btnCalculadora :hover {
+        color: #d2be25;
+        transition: 0.2s ease;
+    }
+
+    .btnConverter {
+        border-bottom: 3px solid #d2be25;
+    }
+
+    .header {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+    }
+
+    .header.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
     @media screen and (min-width: 1300px) {
 
@@ -175,6 +204,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+
         }
 
         .entryarea {
@@ -195,6 +225,7 @@
             display: flex;
             flex-direction: column;
             border-radius: 25px;
+
         }
 
         .input {
@@ -246,27 +277,17 @@
             color: white;
         }
 
-        .btnAcao :hover {
-            color: #d2be25;
-        }
 
-        .btnConverter {
-            border-bottom: 3px solid #d2be25;
-        }
 
         .container-titulo {
             font-size: 14px;
         }
 
-        .btnCalculadora :hover {
-            color: #d2be25;
-            transition: 0.2s ease;
-        }
     }
 </style>
 
 <body>
-    <div class="header">
+    <div class="header" id="header">
         <img src="https://i.imgur.com/sDF5kSA.png" alt="">
     </div>
     <div class="main">
@@ -304,25 +325,25 @@
 
         <div class="container">
             <div class="resultado-texto">
-             Decimal:
+                Decimal:
 
                 <div id="msgDecimal"> </div>
             </div>
 
             <div class="resultado-texto">
-               Octal:
+                Octal:
 
                 <div id="msgOctal"> </div>
 
             </div>
             <div class="resultado-texto">
-               Hexadecimal:
+                Hexadecimal:
 
                 <div id="msgHexa"> </div>
 
             </div>
             <div class="resultado-texto">
-               Binario:
+                Binario:
 
                 <div id="msgBinario"> </div>
 
@@ -340,6 +361,12 @@
 
 </html>
 <script>
+    window.addEventListener('load', () => {
+        const container = document.getElementById('header');
+        container.classList.add('show');
+    });
+
+
     function converter() {
         var base = selectStyle.value;
         var valor = demo1.value;
@@ -366,27 +393,26 @@
 
         if (base == 'Decimal') {
             msgOctal.innerHTML = `<h3>${decimal.toString(8)}<h3>`;
-            msgHexa.innerHTML =`<h3>${decimal.toString(16)}<h3>`;
-            msgBinario.innerHTML =`<h3>${decimal.toString(2)}<h3>`;
+            msgHexa.innerHTML = `<h3>${decimal.toString(16)}<h3>`;
+            msgBinario.innerHTML = `<h3>${decimal.toString(2)}<h3>`;
             msgDecimal.innerHTML = " ";
 
         } else if (base == 'Octal') {
-            msgDecimal.innerHTML =`<h3>${decimal.toString(10)}<h3>`;
-            msgHexa.innerHTML =`<h3>${decimal.toString(16)}<h3>`;
-            msgBinario.innerHTML =`<h3>${decimal.toString(2)}<h3>`;
+            msgDecimal.innerHTML = `<h3>${decimal.toString(10)}<h3>`;
+            msgHexa.innerHTML = `<h3>${decimal.toString(16)}<h3>`;
+            msgBinario.innerHTML = `<h3>${decimal.toString(2)}<h3>`;
             msgOctal.innerHTML = " ";
 
         } else if (base == 'Hexadecimal') {
             msgOctal.innerHTML = `<h3>  ${decimal.toString(8)}<h3>`;
-            msgDecimal.innerHTML =`<h3>${decimal.toString(10)}<h3>`;
-            msgBinario.innerHTML =`<h3>${decimal.toString(2)}<h3>`;
+            msgDecimal.innerHTML = `<h3>${decimal.toString(10)}<h3>`;
+            msgBinario.innerHTML = `<h3>${decimal.toString(2)}<h3>`;
             msgHexa.innerHTML = " ";
-
 
         } else {
             msgOctal.innerHTML = `<h3>  ${decimal.toString(8)}<h3>`;
-            msgHexa.innerHTML =`<h3>${decimal.toString(16)}<h3>`;
-            msgDecimal.innerHTML =`<h3>${decimal.toString(10)}<h3>`;
+            msgHexa.innerHTML = `<h3>${decimal.toString(16)}<h3>`;
+            msgDecimal.innerHTML = `<h3>${decimal.toString(10)}<h3>`;
             msgBinario.innerHTML = " ";
 
         }
