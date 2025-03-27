@@ -10,9 +10,41 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
 </head>
 
 <style>
+    :root {
+        --body-bg: white;
+        --bordas: white;
+        --color-hovers: #8D25D2;
+        --bg-image: url(./img/image8.png);
+        --select-bg: transparent;
+        --select-color: black;
+
+    }
+
+    .dark-mode {
+        --body-bg: black;
+        --bordas: white;
+        --color-hovers: #d2be25;
+        --bg-image: url(./img/image22.png);
+        --select-bg: black;
+        --select-color: white;
+
+
+    }
+
+    /* Restante do estilo, igual ao que você já havia feito */
+
+
+    /* Aqui mantém o restante do estilo que você já havia feito */
+
+
+
+
     * {
         margin: 0;
         padding: 0;
@@ -26,8 +58,8 @@
         min-height: 99vh;
         justify-content: center;
         align-items: center;
-        background-color: black;
-        background-image: url(image22.png);
+        background-color: var(--body-bg);
+        background-image: var(--bg-image);
         background-size: cover;
         background-position: center;
         overflow: hidden;
@@ -39,17 +71,19 @@
         min-height: 325px;
         justify-content: center;
         align-items: center;
-        border: 1px solid white;
+        border: 1px solid var(--bordas);
         gap: 14px;
         display: flex;
         flex-direction: column;
         border-radius: 25px;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        backdrop-filter: blur(50px);
+        backdrop-filter: blur(5px);
+        background-color: rgba(0, 0, 0, 0.22); /* Preto com 22% de opacidade */
+
 
     }
 
-   
+
 
     .entryarea {
         position: relative;
@@ -66,7 +100,7 @@
         padding: 0 30px;
         line-height: 80px;
         border-radius: 10px;
-        border: 2px solid white;
+        border: 2px solid var(--bordas);
         background-color: transparent;
         transition: 0.1s ease;
         z-index: 1111;
@@ -83,12 +117,12 @@
     .input:focus,
     .input:valid {
         color: white;
-        border: 2px solid white;
+        border: 2px solid var(--bordas);
     }
 
     .input:focus+.labelline,
     .input:valid+.labelline {
-        color: white;
+        color: var(--bordas);
         height: 13px;
         line-height: 0px;
         transform: translate(-15px, -16px) scale(0.88);
@@ -106,7 +140,7 @@
         border-radius: 10px;
         font-size: 25px;
         font-weight: bold;
-        color: white;
+        color: var(--bordas);
     }
 
 
@@ -125,7 +159,7 @@
         font-size: 11px;
         gap: 48px;
         justify-content: center;
-        color: white;
+        color: var(--bordas);
     }
 
     .titulo-resultado {
@@ -134,13 +168,13 @@
         font-size: 11px;
         gap: 48px;
         justify-content: flex-start;
-        color: white;
+        color: var(--bordas);
         width: 93%;
     }
 
     #selectStyle {
-        color: white;
-        background-color: black;
+        color: var(--select-color);
+        background-color: var(--select-bg);
     }
 
     .resultado-texto {
@@ -149,27 +183,30 @@
         padding: 0 18px;
         line-height: 80px;
         border-radius: 10px;
-        border: 2px solid white;
+        border: 2px solid var(--bordas);
         background-color: transparent;
         transition: 0.1s ease;
-        color: white;
+        color: var(--bordas);
         display: flex;
         height: 48px;
         align-items: center;
     }
 
     .btnAcao :hover {
-        color: #d2be25;
+        color: var(--color-hovers);
     }
 
+    .btnCalculadora h1 {
+        color: var(--bordas);
+    }
 
     .btnCalculadora :hover {
-        color: #d2be25;
+        color: var(--color-hovers);
         transition: 0.2s ease;
     }
 
     .btnConverter {
-        border-bottom: 3px solid #d2be25;
+        border-bottom: 3px solid var(--color-hovers);
     }
 
     .header {
@@ -220,7 +257,7 @@
             min-height: 674px;
             justify-content: space-evenly;
             align-items: center;
-            border: 1px solid white;
+            border: 1px solid var(--bordas);
             gap: 14px;
             display: flex;
             flex-direction: column;
@@ -237,7 +274,7 @@
             padding: 0 30px;
             line-height: 80px;
             border-radius: 10px;
-            border: 2px solid white;
+            border: 2px solid var(--bordas);
             background-color: transparent;
             transition: 0.1s ease;
             z-index: 1111;
@@ -257,10 +294,10 @@
             padding: 0 18px;
             line-height: 80px;
             border-radius: 10px;
-            border: 2px solid white;
+            border: 2px solid var(--bordas);
             background-color: transparent;
             transition: 0.1s ease;
-            color: white;
+            color: var(--bordas);
             display: flex;
             height: 74px;
             align-items: center;
@@ -274,7 +311,7 @@
             border-radius: 10px;
             font-size: 25px;
             font-weight: bold;
-            color: white;
+            color: var(--bordas);
         }
 
 
@@ -284,14 +321,58 @@
         }
 
     }
+
+
+    /* Esconder ambos os ícones por padrão */
+    #sun-icon,
+    #moon-icon {
+        display: none;
+    }
+
+    /* Quando o modo escuro estiver ativado, esconder o ícone do sol */
+    .dark-mode #moon-icon {
+        display: block;
+    }
+
+    /* Quando o modo claro estiver ativado, esconder o ícone da lua */
+    .light-mode #sun-icon {
+        display: block;
+    }
+
+    /* Estilizar o checkbox (tamanho, bordas, etc.) */
+    input[type="checkbox"] {
+        display: none;
+        /* Esconder o checkbox real */
+    }
+
+    label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    #sun-icon,
+    #moon-icon {
+        font-size: 24px;
+        transition: 0.3s ease;
+    }
+
+    /* Para adicionar um efeito suave na transição do ícone */
+    label:hover #sun-icon,
+    label:hover #moon-icon {
+        transform: scale(1.2);
+    }
 </style>
 
 <body>
     <div class="header" id="header">
         <img src="https://i.imgur.com/sDF5kSA.png" alt="">
+
     </div>
     <div class="main">
+
         <div class="container">
+
             <div class="container-titulo">
                 <div class="btnConverter">
                     <h1>CONVERTER</h1>
@@ -301,7 +382,6 @@
                         <h1>CALCULADORA</h1>
                     </a>
                 </div>
-
             </div>
             <div class="entryarea">
 
@@ -353,9 +433,16 @@
 
     <!-- footer -->
 
-    <div class="Footer" style="padding: 25px;">
+    <div class="Footer" style="padding: 25px; display: flex; align-items: center; justify-content: center; gap: 10px;">
         <p style="color: white;">Feito by <span style="color: #8D25D2;">Hygor Silva</span> e <span style="color: #d2be25
         ;">Erick Silva</span></p>
+        <div class="theme-toggle">
+            <input type="checkbox" id="switch" />
+            <label for="switch">
+                <i class="fas fa-sun" id="sun-icon"></i>
+                <i class="fas fa-moon" id="moon-icon" style="color: white;"></i>
+            </label>
+        </div>
     </div>
 </body>
 
@@ -365,6 +452,24 @@
         const container = document.getElementById('header');
         container.classList.add('show');
     });
+
+    const $html = document.querySelector('html');
+    const $checkbox = document.querySelector('#switch');
+
+    // Definir o modo claro como padrão ao carregar a página
+    $html.classList.add('light-mode');
+
+    $checkbox.addEventListener('change', function () {
+        // Alterna entre as classes light-mode e dark-mode
+        if ($checkbox.checked) {
+            $html.classList.add('dark-mode');
+            $html.classList.remove('light-mode');
+        } else {
+            $html.classList.add('light-mode');
+            $html.classList.remove('dark-mode');
+        }
+    });
+
 
 
     function converter() {
